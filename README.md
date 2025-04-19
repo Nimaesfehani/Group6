@@ -72,7 +72,7 @@
 | 1️⃣     |         prototype     | Nima , Mahdi         |
 | 2️⃣     | Repositori         | Hossein, Farhan             |
 | 3️⃣     | Work Report         | Sana             |
-| 3️⃣     | Forums, Events, UI Polishing            | All Members             |
+| 4️⃣     | Forums, Events, UI Polishing            | All Members             |
 
 
 ---
