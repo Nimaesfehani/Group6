@@ -106,7 +106,6 @@
 - Reports and deliverables uploaded at end of each Sprint
 
 ---
-SS
 
 > 🧑‍🏫 _Course_: Software Engineering  
 > 🏫 _University of Guilan – Spring 2025_  
