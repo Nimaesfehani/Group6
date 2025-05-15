@@ -33,7 +33,7 @@
 |   MohammadReza Esfehani   | `Nimaesfehani`         | Nima.sam2015@gmail.com      |
 |   Sana Mansouri   | `swnman`   | sanamantkd@gmail.com        |
 |   Farhan Bagheri   | `farhanbgh` | farhanbagheri.fb@gmail.com    |
-|   Mahdi Nezamdoost   | `mahdi465`  |  |
+|   Mahdi Nezamdoost   | `mahdi465`  |  | nezammahdi96@gmail.com    |
 |   Hossein Yadollahi   | `husseiny8`         | husseiny.1382@gmail.com      |
 
 ---
