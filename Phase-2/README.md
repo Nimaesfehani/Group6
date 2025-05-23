@@ -66,5 +66,3 @@ After applying the above fixes, we re-ran the OWASP ZAP scan and verified that t
 
 ---
 
-## 📁 Repository Content
-
