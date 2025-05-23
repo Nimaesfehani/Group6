@@ -1,112 +1,70 @@
+# 🔐 Security Evaluation of HumHub Deployment
 
-# 🌐 Internal Social Network – Phase 1
-
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Sprint](https://img.shields.io/badge/Current_Sprint-1-blue)
-![Prototype](https://img.shields.io/badge/Prototype-Figma-blue)
-![License](https://img.shields.io/badge/License-Academic-white?style=flat&logoColor=blue)
+This repository contains our setup and security evaluation of the **HumHub** open-source social network. We analyzed the local deployment using **OWASP ZAP** to identify potential vulnerabilities.
 
 ---
 
-## 🧾 Project Overview
+## ✅ Selected Platform
 
-> A mobile-first **internal social network** for organizational communication.  
-> Designed to enhance team collaboration, boost engagement, and ensure a secure digital workspace.
-
----
-
-## 🎯 Main Goals
-
-- ✅ Clean, user-friendly interface
-- ✅ Secure login and user account management
-- ✅ Post creation (text, images, videos, polls)
-- ✅ Real-time messaging (private & group)
-- ✅ Forums and topic-based discussions
-- ✅ Event scheduling and invitations
+- **Chosen platform:** [HumHub](https://www.humhub.com/)
+- **Version used:** PHP-based, Apache server, local installation
+- **Purpose:** Evaluate security risks and address key issues
 
 ---
 
-## 👥 Team Members
+## ⚠️ Key Security Findings
 
-| Name             | GitHub ID          | Email                        |
-|------------------|--------------------|------------------------------|
-|   MohammadReza Esfehani   | `Nimaesfehani`         | Nima.sam2015@gmail.com      |
-|   Sana Mansouri   | `swnman`   | sanamantkd@gmail.com        |
-|   Farhan Bagheri   | `farhanbgh` | farhanbagheri.fb@gmail.com    |
-|   Mahdi Nezamdoost   | `mahdi465`  |  | nezammahdi96@gmail.com    |
-|   Hossein Yadollahi   | `husseiny8`         | husseiny.1382@gmail.com      |
+We identified three main vulnerabilities in our local deployment using OWASP ZAP:
 
 ---
 
-## 📁 Repository Structure
+### 1. ❌ Missing Content-Security-Policy (CSP) Header
 
-```bash
-.
-├── prototype/     # Figma design files
-├── docs/          # Reports and requirement analysis
-├── issues/        # Task tracking
-└── README.md      # Project overview (this file)
-```
-
----
-
-## 🛠 Tools & Technologies
-
-| Tool     | Usage                      |
-|----------|----------------------------|
-| **Figma**    | UI/UX prototyping         |
-| **GitHub**   | Source control & planning |
-| **Markdown** | Documentation             |
+- **Description:** The application does not set a `Content-Security-Policy` (CSP) header in HTTP responses.
+- **Risk:** Medium
+- **Impact:** Absence of CSP allows for a broader attack surface, increasing the risk of XSS (Cross-Site Scripting) and code injection.
+- **Fix:**
+  - Add the following header to your Apache or PHP configuration:
+    ```http
+    Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none';
+    ```
 
 ---
 
-## 📐 Methodology: Agile / Scrum
+### 2. ❌ Apache Server Status Page Exposed
 
-> We adopted an **Agile** approach using the **Scrum** framework.  
-> The project is divided into three **Sprints** for better focus and delivery.
-
-### 🔁 Sprint Breakdown
-
-| Sprint | Focus Areas                              | Members Involved       |
-|--------|-------------------------------------------|-------------------------|
-| 1️⃣     |         prototype     | Nima , Mahdi         |
-| 2️⃣     | Repositori         | Hossein, Farhan             |
-| 3️⃣     | Work Report         | Sana             |
-| 4️⃣     | Forums, Events, UI Polishing            | All Members             |
-
-
----
-
-## 🧪 Prototype
-
-- Tool: **Figma**
-- Link to Prototype: _To be added_
+- **URL:** `http://localhost/server-status`
+- **Risk:** Medium
+- **Impact:** The Apache `server-status` endpoint reveals sensitive information about active connections, software versions, and server uptime.
+- **Fix:**
+  - Restrict access to local requests only:
+    ```apache
+    <Location /server-status>
+        SetHandler server-status
+        Require local
+    </Location>
+    ```
 
 ---
 
-## ✅ Requirement Coverage
+### 3. ❌ Directory Browsing Enabled
 
-| Feature               | Covered |
-|------------------------|---------|
-| User Authentication    | ✅      |
-| Profile Editing        | ✅      |
-| Post Types (text/image/video/poll) | ✅ |
-| Messaging System       | ✅      |
-| Forums & Topics        | ✅      |
-| Event Creation         | ✅      |
-
----
-
-## 📎 Collaboration on GitHub
-
-- All team members are collaborators
-- Tasks are tracked as GitHub **Issues**
-- Each commit references its related **Issue**
-- **Projects/Iterations** used for Sprint planning
-- Reports and deliverables uploaded at end of each Sprint
+- **Path:** `/humhub/assets/`
+- **Risk:** Medium
+- **Impact:** Public users can list files in this directory, potentially exposing sensitive files or scripts.
+- **Fix:**
+  - Disable directory listing in `.htaccess` or Apache config:
+    ```apache
+    Options -Indexes
+    ```
 
 ---
 
-> 🧑‍🏫 _Course_: Software Engineering  
-> 🏫 _University of Guilan – Spring 2025_  
-> 👨‍🏫 _Instructor_: Dr. Farid Feyzi  
+## ✅ Post-Fix Validation
+
+After applying the above fixes, we re-ran the OWASP ZAP scan and verified that the issues no longer appear in the results.
+
+---
+
+## 📁 Repository Content
+
