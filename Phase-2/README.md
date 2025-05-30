@@ -58,7 +58,7 @@ We identified three main vulnerabilities in our local deployment using OWASP ZAP
 - **Fix:**
   - Add the following header to your Apache or PHP configuration:
     ```http
-    Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none';
+    Content-Security-Policy: default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none';s
     ```
 
 ---
