@@ -1,8 +1,7 @@
 
-# 🌐 Internal Social Network – Phase 1
+# 🌐 Internal Social Network
 
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Sprint](https://img.shields.io/badge/Current_Sprint-1-blue)
 ![Prototype](https://img.shields.io/badge/Prototype-Figma-blue)
 ![License](https://img.shields.io/badge/License-Academic-white?style=flat&logoColor=blue)
 
@@ -33,20 +32,10 @@
 |   MohammadReza Esfehani   | `Nimaesfehani`         | Nima.sam2015@gmail.com      |
 |   Sana Mansouri   | `swnman`   | sanamantkd@gmail.com        |
 |   Farhan Bagheri   | `farhanbgh` | farhanbagheri.fb@gmail.com    |
-|   Mahdi Nezamdoost   | `mahdi465`  |  | nezammahdi96@gmail.com    |
 |   Hossein Yadollahi   | `husseiny8`         | husseiny.1382@gmail.com      |
 
 ---
 
-## 📁 Repository Structure
-
-```bash
-.
-├── prototype/     # Figma design files
-├── docs/          # Reports and requirement analysis
-├── issues/        # Task tracking
-└── README.md      # Project overview (this file)
-```
 
 ---
 
@@ -64,15 +53,6 @@
 
 > We adopted an **Agile** approach using the **Scrum** framework.  
 > The project is divided into three **Sprints** for better focus and delivery.
-
-### 🔁 Sprint Breakdown
-
-| Sprint | Focus Areas                              | Members Involved       |
-|--------|-------------------------------------------|-------------------------|
-| 1️⃣     |         prototype     | Nima , Mahdi         |
-| 2️⃣     | Repositori         | Hossein, Farhan             |
-| 3️⃣     | Work Report         | Sana             |
-| 4️⃣     | Forums, Events, UI Polishing            | All Members             |
 
 
 ---
